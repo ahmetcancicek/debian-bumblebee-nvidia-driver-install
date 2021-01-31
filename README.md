@@ -2,7 +2,12 @@
 
 # Install
 
-``` make install  ```
+```
+cd ~/Downloads
+git clone https://github.com/ahmetcancicek/debian-bumblebee-nvidia-driver-install.git
+cd debian-bumblebee-nvidia-deriver-install
+make install
+```
 
 # Nvidia X Server Settings
 
