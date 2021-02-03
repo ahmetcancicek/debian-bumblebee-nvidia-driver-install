@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ![ $(id -u) = 0]; then
+   echo "You are not root! This script must be run as root"
+   exit 1
+fi
+
 cd ~
 
 # First we shoul update
@@ -19,7 +24,7 @@ apt-get install bumblebee-nvidia
 apt-get install libcuda1
 
 # For 32 bit
-sudo apt-get install primus-libs:i386 libgl1-nvidia-glx:i386
+apt-get install primus-libs:i386 libgl1-nvidia-glx:i386
 
 # Add user to Bumblebee Group. 
 # The first time you install Bumblebee, the bumblebee group has to be created.
@@ -32,4 +37,7 @@ cd /usr/share/applications
 sed -i 's/Exec=nvidia-settings/optirun nvidia-settings -c :8/g' nvidia-settings.desktop
 
 # Restart
-reboot
+systemctl reboot
+
+
+
