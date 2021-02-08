@@ -8,7 +8,7 @@ fi
 cd ~
 
 # First we shoul update
-apt-get update
+apt-get -y update
 
 # For 32 bit applications
 dpkg --add-architecture i386
@@ -17,14 +17,14 @@ dpkg --add-architecture i386
 modprobe bbswitch load_state=0
 
 # Install Bumblebee Nvidia Driver and extra tool
-apt-get install nvidia-kernel-dkms nvidia-xconfig nvidia-smi nvidia-settings primus libgl1-nvidia-glx
+apt-get -y install nvidia-kernel-dkms nvidia-xconfig nvidia-smi nvidia-settings primus libgl1-nvidia-glx
 
-apt-get install bumblebee-nvidia
+apt-get -y install bumblebee-nvidia
 
-apt-get install libcuda1
+apt-get -y install libcuda1
 
 # For 32 bit
-apt-get install primus-libs:i386 libgl1-nvidia-glx:i386
+apt-get -y install primus-libs:i386 libgl1-nvidia-glx:i386
 
 # Add user to Bumblebee Group. 
 # The first time you install Bumblebee, the bumblebee group has to be created.
