@@ -41,7 +41,7 @@ adduser $USER bumblebee
 cd ..
 cd ..
 cd /usr/share/applications
-echo "optirun nvidia-settings -c :8" >> nvidia-settings.desktop
+sed -i 's/Exec=nvidia-settings/Exec=optirun nvidia-settings -c :8/g' nvidia-settings.desktop
 
 # Restart
 systemctl reboot
