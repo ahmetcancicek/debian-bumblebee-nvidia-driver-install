@@ -5,9 +5,11 @@ if ![ $(id -u) = 0]; then
    exit 1
 fi
 
-cd ~
+# HOME 
+USER=$(logname) 
+eval cd ~$USER
 
-# First we shoul update
+# First we should update
 apt-get -y update
 
 # For 32 bit applications
@@ -26,6 +28,9 @@ apt-get -y install libcuda1
 # For 32 bit
 apt-get -y install primus-libs:i386 libgl1-nvidia-glx:i386
 
+# Dependency
+apt-get -y install -f
+
 # Add user to Bumblebee Group. 
 # The first time you install Bumblebee, the bumblebee group has to be created.
 # Users who are allowed to use Bumblebee need to be added to the group:
@@ -33,8 +38,10 @@ apt-get -y install primus-libs:i386 libgl1-nvidia-glx:i386
 adduser $USER bumblebee
 
 #
+cd ..
+cd ..
 cd /usr/share/applications
-sed -i 's/Exec=nvidia-settings/optirun nvidia-settings -c :8/g' nvidia-settings.desktop
+echo "optirun nvidia-settings -c :8" >> nvidia-settings.desktop
 
 # Restart
 systemctl reboot
