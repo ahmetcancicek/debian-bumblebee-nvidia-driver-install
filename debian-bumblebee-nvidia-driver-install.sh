@@ -35,7 +35,7 @@ apt-get -y install -f
 # The first time you install Bumblebee, the bumblebee group has to be created.
 # Users who are allowed to use Bumblebee need to be added to the group:
 # groupadd bumblebee
-adduser $USER bumblebee
+sudo adduser $USER bumblebee
 
 #
 cd ..
